@@ -35,7 +35,7 @@ export  const MyHeader = () => {
             <div className=' flex flex-col hidden-min-[581px]   gap-4'>
             <NavLink to='/' className={navLinkClass}>Kezdőlap</NavLink>
               <NavLink to='/Movies' className={navLinkClass}>Filmek</NavLink>
-                <NavLink to='/Tvshows' className={navLinkClass}>Sorozatok</NavLink>
+                <NavLink to='/tv' className={navLinkClass}>Sorozatok</NavLink>
                   <NavLink to='/SearchMedia' className={navLinkClass}>Keresés</NavLink>
                     
 
@@ -43,7 +43,7 @@ export  const MyHeader = () => {
           ) }
         </nav>
        </header>
-       <main>
+       <main> 
         <Outlet/>
        </main>
     </div>

@@ -13,9 +13,27 @@ const api = axios.create({
 ,sort_by:"popularity.desc"
     }
 })
+export const getMovies = async ()=>{
+    
+    
+    const response =await api.get("/discover/movie")
+    return response.data.results
+
+    }
+    export const getTvShows = async ()=>{
+    
+    
+    const response =await api.get("/discover/tv")
+    return response.data.results
+
+    }
+
 export const getTrendings = async ()=>{
-    console.log("ok");
+    
     
     const response =await api.get("/trending/all/week")
     return response.data.results
+
+    
+
 }
