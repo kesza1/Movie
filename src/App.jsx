@@ -3,9 +3,10 @@ import { MyHeader } from './Components/MyHeader'
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import {Home} from './Pages/Home'
-import {Tvshows } from './Pages/Tvshows'
+import { Tvshows} from './Pages/Tvshows'
 import { Movies } from './Pages/Movies'
   import {NotFound } from './Pages/NotFound'
+  import { SearchMedia } from './Pages/SearchMedia'
 const myRouter = createBrowserRouter([
   {
     element: <MyHeader />,
@@ -25,7 +26,13 @@ const myRouter = createBrowserRouter([
       {
         path: '*',
         element: <NotFound />
+
       }
+ ,    
+  ,    {
+  path: '/SearchMedia',
+  element: <SearchMedia />
+},
     ]
   }
 ])

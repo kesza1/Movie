@@ -18,11 +18,12 @@ export  const MyHeader = () => {
           <div className='text-2xl font-bold'>
             Movie <span className='text-red-500'>Zone</span>
           </div>
+          
           {/*asztali menu*/}
           <div className='hidden-min-[580px]: flex gap-8'>
             <NavLink to='/' className={navLinkClass}>Kezdőlap</NavLink>
-              <NavLink to='/Movies' className={navLinkClass}>Filmek</NavLink>
-                <NavLink to='/Tvshows' className={navLinkClass}>Sorozatok</NavLink>
+              <NavLink to='/movies' className={navLinkClass}>Filmek</NavLink>
+                <NavLink to='/tv' className={navLinkClass}>Sorozatok</NavLink>
                   <NavLink to='/SearchMedia' className={navLinkClass}>Keresés</NavLink>
                     
 
@@ -34,7 +35,7 @@ export  const MyHeader = () => {
           {menuOpen && (
             <div className=' flex flex-col hidden-min-[581px]   gap-4'>
             <NavLink to='/' className={navLinkClass}>Kezdőlap</NavLink>
-              <NavLink to='/Movies' className={navLinkClass}>Filmek</NavLink>
+              <NavLink to='/movies' className={navLinkClass}>Filmek</NavLink>
                 <NavLink to='/tv' className={navLinkClass}>Sorozatok</NavLink>
                   <NavLink to='/SearchMedia' className={navLinkClass}>Keresés</NavLink>
                     

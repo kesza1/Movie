@@ -1,32 +1,22 @@
-import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { getTvShows } from '../../utils';
-import { MediaList  } from '../Components/MediaList';
-import { Loading } from '../Components/Loading';
+import React, { useState, useEffect } from 'react'
+import { getTvShows } from '../../utils'
+import { MediaList } from '../Components/MediaList'
+import { Loading } from '../Components/Loading'
 
-  export const Tvshows = () => {
+export const Tvshows = () => {
   const [show, setShow] = useState(null)
-  show && console.log(show);
-  
-   useEffect(() => {
-      getTvShows().then(setShow)
-  
-  
-      
-    }, []
-  
-    )
+
+  useEffect(() => {
+    getTvShows().then(setShow)
+  }, [])
+
   return (
     <div>
       {show ? (
-                 <MediaList data={show} type='Show' />
-               ) : (
-                 <Loading />
-               )}
+        <MediaList data={show} type="tv" />
+      ) : (
+        <Loading />
+      )}
     </div>
   )
 }
-
-
-

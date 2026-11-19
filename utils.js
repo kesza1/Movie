@@ -37,3 +37,21 @@ export const getTrendings = async ()=>{
     
 
 }
+
+export const getMedia=async (type, searchText)=>{
+    const response = await api.get(`/search/${type}?query=${searchText}`)
+    return response.data.results
+}
+
+const pageTitle = [
+  { type: 'trending', title: 'Popular this week' },
+  { type: 'movie', title: 'Movies' },
+  { type: 'tv', title: 'TV Series' }
+]
+
+export const getTitle = (type) => {
+  const selected = pageTitle.find(obj => obj.type === type)
+
+  return selected ? selected.title : 'Popular this week'
+}
+
