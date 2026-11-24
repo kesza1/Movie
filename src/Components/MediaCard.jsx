@@ -1,37 +1,57 @@
+
 import React from 'react'
+import { useState } from 'react'
 import { img_300 } from '../../utils'
 import { Rating } from './Rating'
+import { MyModal } from './MyModal'
 
 export const MediaCard = ({ media, type }) => {
-  return (
-    <div className="card bg-gray-300 text-gray-800 w-full shadow-sm">
 
-      <figure>
-        <img
-          src={img_300 + media.poster_path}
-          alt={media.title || media.name}
-        />
-      </figure>
+    const [isOpen, setisOpen] = useState(false)
 
-      <div className="card-body">
+    return (
+        <>
+            <div
+                onClick={() => setisOpen(true)}
+                className="card bg-gray-300 text-gray-800 w-full shadow-sm cursor-pointer"
+            >
 
-        <h2 className="card-title">
-          {media.title || media.name}
-        </h2>
+                <figure>
+                    <img
+                        src={media.poster_path ? img_300 + media.poster_path : 'images.png'}
+                        alt={media.title || media.name}
+                    />
+                </figure>
 
-        <div className="flex justify-between pt-2">
+                <div className="card-body">
 
-          <span>
-            {media.media_type || type}
-            {type !== 'trending' && <Rating vote={media.vote_average} />}
-          </span>
+                    <h2 className="card-title">
+                        {media.title || media.name}
+                    </h2>
 
-          <span>
-            {media.release_date || media.first_air_date}
-          </span>
+                    <div className="flex justify-between pt-2">
 
-        </div>
-      </div>
-    </div>
-  )
+                        <span>
+                            {media.media_type || type}
+                            {type !== 'trending' && <Rating vote={media.vote_average} />}
+                        </span>
+
+                        <span>
+                            {media.release_date || media.first_air_date}
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+
+            {isOpen && (
+                <MyModal
+                    isOpen={isOpen}
+                    setisOpen={setisOpen}
+                    media={media}
+                    type={media.media_type || type}
+                />
+            )}
+        </>
+    )
 }

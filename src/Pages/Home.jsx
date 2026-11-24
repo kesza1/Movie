@@ -1,20 +1,22 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getTrendings } from '../../utils'
 import { MediaList } from '../Components/MediaList'
-import { img_300, img_500 } from '../../utils'
 import { Loading } from '../Components/Loading'
+import { Pagination } from '../Components/Pagination'
 
 export const Home = () => {
 
     const [trendings, setTrendings] = useState(null)
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
-        getTrendings()
+        setTrendings(null)
+
+        getTrendings(page)
             .then(setTrendings)
-            .catch((error) => console.log(error))
-    }, [])
+            .catch(error => console.log(error))
+
+    }, [page])
 
     return (
         <div>
@@ -23,7 +25,8 @@ export const Home = () => {
             ) : (
                 <Loading />
             )}
+
+            <Pagination page={page} setPage={setPage}  maxPage={trendings?.total_pages || 1 }/>
         </div>
     )
 }
-
