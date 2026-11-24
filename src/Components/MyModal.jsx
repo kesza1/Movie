@@ -1,15 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
-import { getTrailer, img_500 } from '../../utils';
+import { getCredits, getTrailer, img_500 } from '../../utils';
 import { AiFillYoutube } from "react-icons/ai";
+import { Carousel } from './Carousel';
 import { useEffect } from 'react';
 export const MyModal = ({isOpen, setisOpen, media , type , id}) => {
   console.log(media);
   const [trailer ,settrailer] = useState(null)
-
+const [credits, setCredits] = useState(null)
 useEffect(() => {
     if (!media || !media.id || !type) return
-
+    getCredits(media.media_type ||type , media.id).then(setCredits)
     getTrailer(type, media.id)
         .then(data => {
             console.log('Összes videó:', data)
@@ -25,7 +26,8 @@ useEffect(() => {
         .catch(error => console.log(error))
 
 }, [media, type])
-
+        credits  && console.log(credits);
+        
     return (
     <div>
       <dialog className={`modal ${isOpen ? "modal-open" : " "}`}>
@@ -37,6 +39,7 @@ useEffect(() => {
     <span>({media.first_air_date || media.release_date})</span>
         <p className="py-4">{media.overview}</p>
       {trailer && <a className='text-3xl' href={`https://youtube.com/watch?v=${trailer.key}`}><AiFillYoutube /> </a>}
+      {credits && <Carousel  credits={credits.slice(0,8)}/>}
     <div className="modal-action p-2">
       <form method="dialog">
        
