@@ -93,6 +93,40 @@ export const getCredits = async (type ,id ) =>{
     
 }
 
+export const getPopularPeople = async (page = 1) => {
+    const response = await api.get("/person/popular", {
+        params: { page }
+    })
+
+    return response.data.results
+}
+
+export const searchPeople = async (searchText, page = 1) => {
+    const response = await api.get(`/search/person`, {
+        params: {
+            query: searchText,
+            page
+        }
+    })
+
+    return response.data
+}
+
+export const getPersonDetails = async (person_id ) =>{
+    
+    const response = await api.get(`/person/${person_id}`)
+    return response.data
+    
+}
+
+export const getPersonCredits = async (person_id ) =>{
+    
+    const response = await api.get(`/person/${person_id}/combined_credits`)
+    return response.data.cast
+    
+}
+
+
 
 export const getTitle = (type) => {
   const selected = pageTitle.find(obj => obj.type === type)

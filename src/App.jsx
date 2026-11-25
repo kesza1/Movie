@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { MyHeader } from './Components/MyHeader'
+import { Actors } from './Pages/Actors'
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import {Home} from './Pages/Home'
@@ -27,7 +28,11 @@ const myRouter = createBrowserRouter([
         path: '*',
         element: <NotFound />
 
-      }
+      },
+    {
+      path: '/actors',
+      element : <Actors/>
+    }
  ,    
   ,    {
   path: '/SearchMedia',

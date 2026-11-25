@@ -7,7 +7,7 @@ import { Categories } from '../Components/Categories'
 import { Pagination } from '../Components/Pagination'
 
 export const Tvshows = () => {
-
+    
     const [show, setShow] = useState(null)
     const [selectedCategories, setselectedCategories] = useState([])
     const [page, setPage] = useState(1)
